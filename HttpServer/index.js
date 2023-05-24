@@ -90,5 +90,3 @@ app.get('/posts' , (req,res) => {
     res.status(200).send(`posts are sent `);
     res.json(posts);
 })
-
-
