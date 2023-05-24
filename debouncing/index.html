@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Debouncing</title>
+</head>
+<body>
+<input type="text" id="message">
+</body>
+<script>
+function debounce(fn, delay) {
+  let timer;
+
+  return function() {
+    clearTimeout(timer);
+
+    timer = setTimeout(fn, delay);
+  };
+}
+
+const messageInput = document.querySelector("input");
+
+const debouncedUpdateMessage = debounce(function() {
+  const message = messageInput.value;
+
+  // Update the text on the page.
+  document.querySelector("body").textContent = message;
+}, 500);
+
+messageInput.addEventListener("input", debouncedUpdateMessage);
+</script>
+</html>
