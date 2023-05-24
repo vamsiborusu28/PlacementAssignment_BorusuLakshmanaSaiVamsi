@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 import app from './src/app.js'
-import config from '../src/config/index.js';
 (async () => {
 
     try{
-       await mongoose.connect(config.MONGODB_URL);
+       await mongoose.connect('mongodb://localhost:27017/blogapp');
        console.log("Database Connected Successfully");
     
         app.on('error', (error) => 
@@ -14,8 +13,8 @@ import config from '../src/config/index.js';
         });
     
         // Listen to the port 
-        app.listen(config.PORT, () => {
-            console.log(`Application is running on port ${config.PORT} successfully`);
+        app.listen(3000, () => {
+            console.log(`Application is running on port 3000 successfully`);
         })
     }catch(err){
         console.log("Error",err);
